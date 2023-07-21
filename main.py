@@ -1,14 +1,14 @@
 import discord
 import asyncio
-import requests
+from datetime import datetime
+import FinanceDataReader as fdr
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
 def check(code):
-    d6 = today.strftime("%Y%m%d")
-    url = "https://api.finance.naver.com/siseJson.naver?symbol=005930&requestType=1&startTime=20140817&endTime=20210605&timeframe=week"
-    res = requests.get(url).json()
+    today = today.strftime("%Y%m%d")
+    df = fdr.DataReader(code, end=today)
 
 @client.event
 async def on_ready():
